@@ -1,0 +1,48 @@
+﻿@page "/register"
+@* @using pr4.Database
+@using pr4.Database.Models *@
+
+<PageTitle>Register</PageTitle>
+
+<h1>Register</h1>
+<div>
+    <span>Введите логин</span>
+    <input @bind-value="@login" type="text">
+</div>
+<div>
+    <span>Введите пароль</span>
+    <input @bind-value="@password" type="password">
+</div>
+<div>
+    <span>Введите ФИО</span>
+    <input @bind-value="@fullname" type="email">
+</div>
+<button onclick="@AddUser">Save</button>
+<div>
+    @ErrorMessage
+</div>
+
+@code {
+    private string login = "";
+    private string password = "";
+    private string fullname = "";
+    private string ErrorMessage = "";
+
+    void AddUser()
+    {
+        try
+        {
+            #region тут весь код по работе с БД
+            // using (ApplicationContext ctx = new ApplicationContext())
+            // {
+            //     ctx.Users.Add(new User() { Fullname = fullname, Login = login, Password = password });
+            // }
+            #endregion
+        }
+        catch (Exception ex)
+        {
+            ErrorMessage = ex.ToString();
+        }
+
+    }
+}
